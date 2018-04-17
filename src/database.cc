@@ -198,7 +198,21 @@ void Database::BuildMemberGraph() {
   // Fill in your code here
   //Take members vector and groups vector as input
   //fills members' "connecting_members"
-  int m_size = members.size();
+  //int m_size = members.size();
+  for (Group *g : groups){
+    for (Member *m : g->members){
+      for (Member *n : g->members){
+        MemberConnection MCn;
+        MCn.group = g;
+        MCn.dst = n;
+        if ((n != m) && (members[m->member_id]->connecting_members[n->member_id].dst == NULL)){
+          m->connecting_members[n->member_id] = MCn;
+          members[m->member_id]->connecting_members[n->member_id] = MCn;
+        }
+      }
+    }
+  }
+  /*
   for (int i = 0; i < m_size - 1; i++){
     for (Group *g : groups){
       if (g->members[i] == members[i]){
@@ -217,7 +231,7 @@ void Database::BuildMemberGraph() {
         }
       }
     }
-  }
+  }*/
 }
 
 //double Database::BestGroupsToJoin(Member *root) {
