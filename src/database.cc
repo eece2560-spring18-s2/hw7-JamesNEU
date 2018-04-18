@@ -196,8 +196,6 @@ void Database::LoadData(const std::string &data_folder_path,
 
 void Database::BuildMemberGraph() {
   // Fill in your code here
-  //Take members vector and groups vector as input
-  //fills members' "connecting_members"
   for (Group *g : groups){
     for (Member *m : g->members){
       for (Member *n : g->members){
@@ -215,6 +213,9 @@ void Database::BuildMemberGraph() {
 
 //double Database::BestGroupsToJoin(Member *root) {
   // Fill in your code here
+  // Prefer groups with less members
+  // Provided member is root of Prim's algorithm minimum spanning tree
+  // Connection weight = number of members in group + 1 (GetWeight())
 //}
 
 }
