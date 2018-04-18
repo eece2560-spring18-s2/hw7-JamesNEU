@@ -9,7 +9,7 @@ int main() {
 
   Timer timer;
   Database db;
-  db.LoadData("../data", 10000, 10000, 100000);
+  db.LoadData("../test_data", 10000, 10000, 100000);
   db.RandomizeGraph(1000000);
   std::cout << "Building graph completed.\n";
 

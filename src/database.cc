@@ -211,11 +211,11 @@ void Database::BuildMemberGraph() {
   }
 }
 
-//double Database::BestGroupsToJoin(Member *root) {
+void Database::BestGroupsToJoin(Member *root) {
   // Fill in your code here
   // Prefer groups with less members
   // Provided member is root of Prim's algorithm minimum spanning tree
   // Connection weight = number of members in group + 1 (GetWeight())
-//}
+}
 
 }
