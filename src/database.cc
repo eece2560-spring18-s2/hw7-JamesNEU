@@ -196,10 +196,26 @@ void Database::LoadData(const std::string &data_folder_path,
 
 void Database::BuildMemberGraph() {
   // Fill in your code here
+  for (Group *g : groups){
+    for (Member *m : g->members){
+      for (Member *n : g->members){
+        MemberConnection MCn;
+        MCn.group = g;
+        MCn.dst = n;
+        if ((n != m) && (members[m->member_id]->connecting_members[n->member_id].dst == NULL)){
+          m->connecting_members[n->member_id] = MCn;
+          members[m->member_id]->connecting_members[n->member_id] = MCn;
+        }
+      }
+    }
+  }
 }
 
-double Database::BestGroupsToJoin(Member *root) {
+void Database::BestGroupsToJoin(Member *root) {
   // Fill in your code here
+  // Prefer groups with less members
+  // Provided member is root of Prim's algorithm minimum spanning tree
+  // Connection weight = number of members in group + 1 (GetWeight())
 }
 
 }

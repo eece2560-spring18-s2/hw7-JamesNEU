@@ -32,7 +32,8 @@ class Database{
   void BuildMemberGraph();
   void RandomizeGraph(int num_connections);
 
-  double BestGroupsToJoin(Member *root);
+  //double BestGroupsToJoin(Member *root);
+  void BestGroupsToJoin(Member *root);
 };
 
 }
